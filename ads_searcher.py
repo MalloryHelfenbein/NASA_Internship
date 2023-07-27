@@ -49,7 +49,7 @@ directory = path+stop_file
 import sys
 sys.path.append(path)
 import TextAnalysis as TA
-import ExpertiseFinder_MSI as EF_MSI
+
 
 """### Step 2: ADS Search function (retrieving the ADS info)
 
