@@ -1,4 +1,5 @@
 # NASA_Internship
 Code from my NASA internship summer 2023 
 
-This repo contains the notebook used in order to find the specific expertise of published authors. The notebook contains all of the necessary functions as well as the steps listed out and what each aspect of the notebook means. Along with the notebook, this repo also contains the necessary stopwords and TextAnalysis files that are used in the functions in the notebook. In order to properly use the notebook, these accompanying files need to be downloaded as well. 
+This repo contains files to assist in finding the expertise of specific authors (or to find authors from specific institutions) through their NASA ADS publications. The following files are located here: 
+- ads_searcher.py: Python file that has all of the functions used to find the expertises of the authors and produce an organized data frame with each row being an individual author and columns: 
