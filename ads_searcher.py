@@ -37,17 +37,15 @@ print(pd. __version__)
 #If the Pandas version differs from 1.5.3, run the following:
 #pip install pandas==1.5.3 --user
 
-token= 'Your own personal token from ADS API page' #Insert your API token
-
 #edit the following string pointing to the directory where the stopwords.txt file is
 path= 'your directory goes here'
 
 stop_file= '\stopwords.txt'
-directory = path+stop_file
+directory = path+stop_file 
 
 #For the TextAnalysis File, please refer to M. Volze et al. 2023
-import sys
-sys.path.append(path)
+import sys 
+sys.path.append(path) 
 import TextAnalysis as TA
 
 
@@ -81,8 +79,8 @@ def ads_search(name=None, institution=None, year= None, refereed= 'property:notr
         query = 'pos(institution:"{}",1)'.format(institution)
         print(query)
 
-    if year_range:
-        if year_range=='general':
+    if year:
+        if year=='general':
             startd= str(2000)
             endd= str(2023)
             years= '['+startd+' TO '+endd+']'
@@ -163,8 +161,8 @@ def ads_search_aff(name=None, institution=None, year= None, refereed= 'property:
         query = 'pos(aff:"{}",1)'.format(institution)
         print(query)
 
-    if year_range:
-        if year_range=='general':
+    if year:
+        if year=='general':
             startd= str(2000)
             endd= str(2023)
             years= '['+startd+' TO '+endd+']'
@@ -227,9 +225,9 @@ def ads_search_aff(name=None, institution=None, year= None, refereed= 'property:
     return df
 
 """### Step 3: Defining data type (dirty vs clean)
-This here will label the data as "clean" vs "dirty" based on if it is published in one of the chosen astronomical journals, if the listed first author matches the input author and if the listed affiliations includes the input institution. If any of these constraints are not met then the publication is marked as "Dirty".
+This here will label the data as "clean" vs "dirty" based on if it is published in one of the chosen astronomical journals and if the listed first author matches the input author. If any of these constraints are not met then the publication is marked as "Dirty".
 
-This is important because in this program we specifically want authors that are published in astronomical journals and we want accurate information regarding where they have worked and what level of information each author knows regarding their specific expertises. By ensuring they are the first author and at the assumed institution, we can trust the data given. We can also decide how to value the publication depending on the journal it is published in (dirty vs clean).
+This is important because in this program we specifically want authors that are published in astronomical journals and we want accurate information regarding where they have worked and what level of information each author knows regarding their specific expertises. By ensuring they are the first author, we can trust the data given. We can also decide how to value the publication depending on the journal it is published in (dirty vs clean).
 
 
 The input is a dataframe with the defined columns as created in the ads_search function.
@@ -255,13 +253,6 @@ def data_type(df):
         else:
             flag=flag+2
 
-# Inst check
-        if institution and institution in row['Affiliations']:
-            data_type_label = 'Clean'
-        elif not institution:
-            data_type_label = 'Clean'
-        else:
-            flag=flag+4
 
 # Update the 'Data Type' column
         if flag==0:
@@ -271,7 +262,8 @@ def data_type(df):
 
         df.at[index, 'Data Type'] = data_type_label
 
-    print(flag) #this lets the user know what aspect of the data made it 'dirty'
+    #this lets the user know what aspect of the data made it 'dirty'- uncomment to see what the "dirty" aspect is
+    #print(flag) 
 
 #flag= 1 just the journal aspect is dirty,
 #flag= 2 just the author aspect is dirty,
