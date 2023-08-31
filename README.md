@@ -1,5 +1,5 @@
 # NASA_Internship
-Code from my NASA internship Summer 2023 
+Code from my NASA internship Summer 2023 on Expanding Diversity in the NASA Astrophysics Panel
 
 Purpose: 
 This repository of functions and files was built in response to NASA’s call to expand and improve the diversity of its pool of potential proposal reviewers. To expand the diversity, this code provides a method of finding experts in specific matters no matter their institution, and it is used specifically throughout my internship to provide information on MSIs (Minority Serving Institutions) and the published authors located at these programs. 
