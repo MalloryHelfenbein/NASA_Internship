@@ -28,6 +28,7 @@ Possible Inputs include:
 - An input file that contains a list of authors and their institutions
 - An input file that contains a list of institutions and a specific year range
 - A singular name or institution (year as an optional argument as well)
+  
 These inputs would all return a datasheet of the information mentioned earlier for each publication found from authors listed or authors at the institution(s).
 
 This code represents an updated version of the one developed by Màire Volz (https://github.com/maireav/NASA-Internship) and utilizes many of the functions already created. A huge thanks to Maire for the beginning of the code development as well as the TextAnalysis file and stopwords file used, also to my internship mentor Antonino Cucchiara for the constant assistance and guidance throughout this process. 
