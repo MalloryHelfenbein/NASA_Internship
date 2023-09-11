@@ -2,33 +2,26 @@
 Code from my NASA internship Summer 2023 on Expanding Diversity in the NASA Astrophysics Panel
 
 **Purpose:** 
-This repository of functions and files was built in response to NASA’s call to expand and improve the diversity of its pool of potential proposal reviewers. To expand the diversity, this code provides a method of finding experts in specific matters no matter their institution, and it is used specifically throughout my internship to provide information on MSIs (Minority Serving Institutions) and the published authors located at these programs. 
+This repository branch is the result of my Summer 2023 Internship at NASA Headquarters. The goals were to creat tools that will enable NASA Headquarters Astrophysics Program Scientists to 
+1) Collect data on institutional demographics of proposers and peer reviews participants (or prospective participants)
+2) To identify people's expertises based on their publication history through the NASA ADS archive.
+Using these tools we tried to reach out to possible reviewers from institutions that normally do not participate, and hopefully change the overall pool of applicants to NASA Astrophysics funds in the future. 
+
+The code represents a version 2.0 of a previous work done by Máire Volz (https://github.com/maireav/NASA-Internship). In the examples, we provide a method of finding experts in specific matters independent from their institutions. Additionally, we show a method that provides specific inromation on researchers at MSIs (Minority Serving Institutions) that have published in Astronomy-focused journals. 
 
 **What the code does:** 
-The main project was the production of the notebook "ads_searcher.ipynb". This is the file that access ADS API and searches for the specifics that the user inputs. The way "ads_searcher" works is that it takes in an argument by the user- which could be a variety of things such as a singular author, an institution, an author and institution, or a list of multiple authors and institutions. It then, using the user's ADS API Access Token (can be found here: https://ui.adsabs.harvard.edu/help/api/), searches the input into ADS. It retrieves important information about the publications found including 'First Author', 'Bibcode', 'Title', 'Publication Date', 'Keywords', 'Affiliations', and 'Abstract'. Then- through a series of functions in the notebook, it cleans up the final datasheet to include the necessary information and to allow the user to easily (manually) determine the expertise of each author ADS returned.  
+The main aspect is the notebook called "ads_searcher.ipynb". The main function can be called in different ways (see examples), but the general idea is to identify researchers with specific expertise, identified by their past publications (refereed or not). 
+
+"Under the hood", this program accesses ADS through the ADS specific API and searches for the specific data according to the user's inputs (some are mandatory and some are optional). The output is a .csv file with all the information collected via the API('First Author', 'Bibcode', 'Title', 'Publication Date', 'Keywords', 'Affiliations', and 'Abstract') and the N-grams created by our code, for visual inspection by the user. The user can then easily determine the expertise of each author ADS returned. 
+
+**What the User needs:**
+The user needs an ADS API Access Token (can be found here:  https://ui.adsabs.harvard.edu/help/api/), which searches the input into ADS. Other libraries needed include: nltk and pandas version 1.5. 
 
 
 **Current files:**
-This repo contains files to assist in finding the expertise of specific authors (or to find authors from specific institutions) through their NASA ADS publications. The following files are located here: 
+Some files are needed to run the actual search, while others are utilized in post-processing and expertise identification (e.g. N-grams creation): 
 - ads_searcher.ipynb: Python file that has all of the functions used to find the expertises of the authors and produce an organized data frame with each row being an individual author and columns: 'Input Author','Input Institution', 'First Author', 'Bibcode', 'Title', 'Publication Date', 'Keywords', 'Affiliations', 'Abstract', 'Data Type'
 - TextAnalysis.py: Python file that has all the functions in order to determine the top words, bigrams and trigrams in each publication.
-- stopwords.txt: Text file that has a list of the stop words for language processing. A user may provide their own or use the file in this repository.
+- stopwords.txt: Text file that has a list of the stop words for language processing. 
 - search_examples.ipynb: A notebook that contains 3 different examples of how to use the ads_searcher functions with different input cases. These input cases include just an author, just an institution, and a csv file of 3 authors with their corresponding institutions.
 
-  **Required Input:**
-- Personal ADS API Access Token: https://ui.adsabs.harvard.edu/help/api/
-- Directory paths to the stopwords.txt and TextAnalysis.py files
-- Input arguments of the users choice (can be an input author or an input .csv file)
-
-**Possible Uses:**
-This program can be used in multiple ways (as shown in the search examples notebook) 
-Possible Inputs include: 
-- An input file that contains an authors name
-- An input file that contains a list of multiple authors names
-- An input file that contains a list of authors and their institutions
-- An input file that contains a list of institutions and a specific year range
-- A singular name or institution (year as an optional argument as well)
-  
-These inputs would all return a datasheet of the information mentioned earlier for each publication found from authors listed or authors at the institution(s).
-
-This code represents an updated version of the one developed by Màire Volz (https://github.com/maireav/NASA-Internship) and utilizes many of the functions already created. A huge thanks to Maire for the beginning of the code development as well as the TextAnalysis file and stopwords file used, also to my internship mentor Antonino Cucchiara for the constant assistance and guidance throughout this process. 
